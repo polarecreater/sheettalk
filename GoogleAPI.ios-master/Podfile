@@ -1,0 +1,12 @@
+platform :ios, '10.0'
+
+use_frameworks!
+target 'GoogleAPI' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  
+
+  # Pods for GoogleAPI
+  pod 'GoogleSignIn'
+  pod 'Fakery'
+
+end
