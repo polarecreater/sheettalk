@@ -14,7 +14,6 @@ class DriveViewModel {
     
     func getFiles(withToken token: String, completion: @escaping ([File]) -> Void) {
         guard let url = URL(string: getStringURL(withToken: token)) else { return }
-        print("token : \(token)")
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -45,7 +44,7 @@ extension Data {
 
 extension DriveViewModel {
     private func getStringURL(withToken token: String) -> String {
-        let url = "https://www.googleapis.com/drive/v4/files/"
+        let url = "https://www.googleapis.com/drive/v3/files/"
         return url + "?access_token=" + token + "&q=mimeType='application/vnd.google-apps.spreadsheet'"
     }
 }

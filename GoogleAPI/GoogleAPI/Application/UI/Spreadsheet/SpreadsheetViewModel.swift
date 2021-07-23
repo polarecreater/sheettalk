@@ -90,8 +90,9 @@ extension SpreadsheetViewModel {
                           completion: @escaping (String) -> Void) {
         getSpreadsheet(withID: id, withToken: token) { sheet in
             guard let rows = sheet?.values.count else { return }
+            guard let columns = sheet?.values[0].count else { return }
             
-            let range = String("A\(rows + 1):C\(rows + 1)")
+            let range = String("R1C1:R\(rows)C\(columns)")
             
             completion(range)
         }

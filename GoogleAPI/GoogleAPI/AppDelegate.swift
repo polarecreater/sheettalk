@@ -12,8 +12,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
-    private let id = "724342757735-k8a7ma5sarht6j5asijbukao2mj25l2s.apps.googleusercontent.com"
-    private let testID = "724342757735-k8a7ma5sarht6j5asijbukao2mj25l2s.apps.googleusercontent.com"
+    private let id = "426539232534-813as5hm3ai8632rggld7q6g8e7pepgq.apps.googleusercontent.com"
+    private let testID = "224113705927-5jvh1cpjoe3gbvadpnlbhoffchdimd3t.apps.googleusercontent.com"
     private let googleService = GoogleService()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

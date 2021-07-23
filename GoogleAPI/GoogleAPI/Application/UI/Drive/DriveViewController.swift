@@ -22,7 +22,6 @@ class DriveViewController: UIViewController {
         
         setupTableView()
         getFiles()
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -79,7 +78,6 @@ extension DriveViewController: UITableViewDataSource {
 extension DriveViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let file = viewModel.driveFiles[indexPath.row]
-        
         router.route(to: .spreadsheet(fromFile: file), from: self, type: .push)
     }
 }

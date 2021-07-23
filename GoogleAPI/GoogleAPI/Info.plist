@@ -25,7 +25,7 @@
 			<string>Main</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.724342757735-k8a7ma5sarht6j5asijbukao2mj25l2s</string>
+				<string>com.googleusercontent.apps.426539232534-813as5hm3ai8632rggld7q6g8e7pepgq</string>
 			</array>
 		</dict>
 		<dict>
@@ -35,7 +35,7 @@
 			<string>Test</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.724342757735-k8a7ma5sarht6j5asijbukao2mj25l2s</string>
+				<string>com.googleusercontent.apps.224113705927-5jvh1cpjoe3gbvadpnlbhoffchdimd3t</string>
 			</array>
 		</dict>
 	</array>
