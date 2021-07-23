@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
-    private let id = "426539232534-813as5hm3ai8632rggld7q6g8e7pepgq.apps.googleusercontent.com"
+    private let id = "613169906838-ikn94o231ttkgrth8dkjvpo76vetq0en.apps.googleusercontent.com"
     private let testID = "224113705927-5jvh1cpjoe3gbvadpnlbhoffchdimd3t.apps.googleusercontent.com"
     private let googleService = GoogleService()
 
