@@ -170,9 +170,12 @@ class SpreadsheetViewController: UIViewController {
 
     // MARK: 시트 내용 저장 Btn
     @objc func saveSheet(_ sender: Any) {
+        print("Push save button")
         viewModel.postNewRow(withID: viewModel.driveFile.id, withToken: GoogleService.accessToken) { _ in
-            self.viewModel.getSpreadsheetValues(withID: self.viewModel.driveFile.id, withToken: GoogleService.accessToken) { sheet in
+            // post 끝나고 view에 띄울 값들 정하는 부분
+            self.viewModel.getSpreadsheetValues(withID: self.viewModel.driveFile.id, withToken: GoogleService.accessToken, GETorPOST: "POST") { sheet in
                 guard let sheet = sheet else { return }
+                print("postNewRow하고 나서 getSpreadsheetValues로 받아온 sheet: ", sheet)
                 self.viewModel.sheet = sheet
                 
                 DispatchQueue.main.async {
@@ -184,7 +187,7 @@ class SpreadsheetViewController: UIViewController {
     
     // MARK: sheet value 받아오기
     private func getFiles() {
-        viewModel.getSpreadsheetValues(withID: viewModel.driveFile.id, withToken: GoogleService.accessToken) { sheet in
+        viewModel.getSpreadsheetValues(withID: viewModel.driveFile.id, withToken: GoogleService.accessToken, GETorPOST: "GET") { sheet in
             guard let sheet = sheet else { return }
             self.viewModel.sheet = sheet
             self.isSheetLoad = true
