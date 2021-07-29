@@ -97,9 +97,24 @@ class SpreadsheetViewController: UIViewController {
             cell.tField.text = inputText.text
             
             // post를 위해 spreadsheet values에 값 대입
+            if viewModel.sheet?.values.count ?? 0 < cell.row {
+                let lastRow = (viewModel.sheet?.values.count ?? 0) + 1
+                for _ in lastRow...numberIndex {
+                    viewModel.sheet?.values.append(Array(repeating: "", count: abcIndex))
+                }
+            }
+            
+            if viewModel.sheet?.values[numberIndex-1].count ?? 0 < abcIndex {
+                let lastColumn = (viewModel.sheet?.values[numberIndex-1].count ?? 0) + 1
+                print("abcindex",abcIndex, ", lastColumn: ",lastColumn)
+                for _ in lastColumn...abcIndex {
+                    viewModel.sheet?.values[numberIndex-1].append("")
+                }
+
+            }
             viewModel.sheet?.values[numberIndex-1][abcIndex-1] = inputText.text!
-//            print("values 배열 전체 출력: ", viewModel.sheet?.values)
-//            print("삽입했는지 확인. values 값!", viewModel.sheet?.values[numberIndex-1][abcIndex-1])
+            print("values 배열 전체 출력: ", viewModel.sheet?.values)
+            print("삽입했는지 확인. values 값!", viewModel.sheet?.values[numberIndex-1][abcIndex-1])
         } else {
             self.showToast(message: "행렬을 다시 입력하세요")
         }
@@ -260,6 +275,10 @@ extension SpreadsheetViewController: SpreadsheetViewDataSource {
 
         return cell
     }
+}
+
+extension SpreadsheetViewController:SpreadsheetViewDelegate {
+    
 }
 
 class SpreadsheetViewCell: Cell {
