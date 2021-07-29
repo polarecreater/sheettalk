@@ -45,6 +45,7 @@ extension Data {
 extension DriveViewModel {
     private func getStringURL(withToken token: String) -> String {
         let url = "https://www.googleapis.com/drive/v3/files/"
+//        print(url + "?access_token=" + token + "&q=mimeType='application/vnd.google-apps.spreadsheet'&fields=*")
         return url + "?access_token=" + token + "&q=mimeType='application/vnd.google-apps.spreadsheet'&fields=*"
     }
 }

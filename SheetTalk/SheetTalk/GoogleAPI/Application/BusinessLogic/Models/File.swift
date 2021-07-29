@@ -18,5 +18,5 @@ struct File: Decodable {
     var kind: String
     var name: String
     var modifiedTime: String
-//    var thumbnailLink: Data
+    var thumbnailLink: String
 }

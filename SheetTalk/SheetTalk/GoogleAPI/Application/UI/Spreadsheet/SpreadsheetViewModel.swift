@@ -101,7 +101,6 @@ extension SpreadsheetViewModel {
     private func getStringURL(fromID id: String, withToken token: String) -> String {
         var url = "https://sheets.googleapis.com/v4/spreadsheets/"
         url += id + "/values:batchGet/" + "?access_token=" + token + "&ranges=A1:N&majorDimension=ROWS" //A1:C => A1:끝값 범위가 충분히 넓으면 다 뜸
-        print(url)
         return url
     }
     

@@ -26,6 +26,7 @@ class DriveViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        view.backgroundColor = #colorLiteral(red: 0.9715676904, green: 0.9767020345, blue: 0.9721227288, alpha: 1)
         view.addSubview(toolBar)
         setupUI()
         
@@ -92,8 +93,7 @@ class DriveViewController: UIViewController {
         guard let navigationBar = self.navigationController?.navigationBar else { return }
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.topItem?.title = navigationTitle
-        self.navigationController?.navigationBar.backgroundColor = .white
-        
+        self.navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 0.9715676904, green: 0.9767020345, blue: 0.9721227288, alpha: 1)
         self.navigationItem.searchController = UISearchController(searchResultsController: nil)
         self.navigationItem.hidesSearchBarWhenScrolling = false        
         
@@ -166,11 +166,12 @@ extension DriveViewController: UITableViewDataSource {
         }
         
         let file = viewModel.driveFiles[indexPath.row]
+
+        let datelabel = file.modifiedTime.components(separatedBy: "T")
         
         cell.sheetName.text = file.name
-        cell.datelabel.text = file.modifiedTime
-        //cell.sheetImg.image = file.
-        
+        cell.datelabel.text = datelabel[0]
+
         return cell
     }
 }
@@ -195,9 +196,56 @@ extension DriveViewController: UICollectionViewDataSource {
         let file = viewModel.driveFiles[indexPath.row]
         
         cell.sheetName.text = file.name
+        
+        
+        // file.thumbnailLink를 url자리에 넣어야함
+        let imgUrl = URL(string: file.thumbnailLink)
+//        var image: UIImage?
+
+        
+        var request = URLRequest(url: imgUrl!)
+        request.httpMethod = "GET"
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else {
+//                    print("Download image fail : \(imgUrl!)")
+                    return
+            }
+
+            DispatchQueue.main.async() {[weak self] in
+//                print("Download image success \(imgUrl!)")
+
+                cell.sheetImg.image = image
+            }
+        }.resume()
+        
+        
+//        DispatchQueue.global().async {
+//            let data = try? Data(contentsOf: imgUrl!)
+//            DispatchQueue.main.async {
+//                image = UIImage(data: data!)
+////                if (data != nil) {
+////                    image = UIImage(data: data!)
+////                } else if #available(iOS 13.0, *) {
+////                        image = UIImage(systemName: "doc.text")!
+////                } else {
+////                        // Fallback on earlier versions
+////                }
+//
+//            }
+//        }
+        //cell.sheetImg.image = UIImage(named: "thumbnail")
+//        cell.sheetImg.image = image
+        
+//        print(cell.sheetName.text, "의 imgUrl: ", imgUrl)
         return cell
     }
-    
+
 }
 
 extension DriveViewController: UICollectionViewDelegate{
