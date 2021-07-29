@@ -8,10 +8,10 @@
 
 struct Spreadsheet: Decodable {
     var spreadsheetId: String
-    var valueRanges: [Sheet]
+    var valueRanges: [ValueRange]
 }
 
-struct Sheet: Decodable {
+struct ValueRange: Decodable {
     var range: String
     var majorDimension: String
     var values: [[String]]

@@ -11,7 +11,7 @@ import UIKit
 class SpreadsheetViewModel {
     var fileName: String
     var driveFile: File
-    var sheet: Sheet?
+    var sheet: ValueRange?
     
     private var spreadsheetID: String
     
@@ -24,11 +24,14 @@ class SpreadsheetViewModel {
         self.spreadsheetID = file.id
     }
     
-    func getSpreadsheet(withID id: String,
+    // MARK: 스프레드시트 가져오기
+    func getSpreadsheetValues(withID id: String,
                         withToken token: String,
-                        completion: @escaping (Sheet?) -> Void) {
+                        completion: @escaping (ValueRange?) -> Void) {
+        // 요청할 내용대로 url에 담도록 batchGetStringURL() 호출
         guard let url = URL(string: getStringURL(fromID: id, withToken: token)) else { return }
         
+        // 생성해둔 url, get 방식으로 URLRequest 생성
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
@@ -69,26 +72,25 @@ extension SpreadsheetViewModel {
                                withToken token: String,
                                completion: @escaping (Data) -> Void) {
         getRange(withID: id, withToken: token) { range in
-            let name = self.mocker.name
-            let price = self.mocker.price
-            let date = self.mocker.purchaseDate
-            
-            let postData = POSTData(range: range, values: [[name, price, date]])
-            let postRequest = POSTRequest(data: [postData])
-            
-            let encoder = JSONEncoder()
-            guard let data = try? encoder.encode(postRequest) else {
-                return
+            if let sheet = self.sheet {
+                let postData = POSTData(range: range, values: sheet.values)
+                print("POST 요청문 HTTP body: ", postData.values) // test용 출력문
+                let postRequest = POSTRequest(data: [postData])
+
+                let encoder = JSONEncoder()
+                guard let data = try? encoder.encode(postRequest) else {
+                    return
+                }
+
+                completion(data)
             }
-            
-            completion(data)
         }
     }
     
     private func getRange(withID id: String,
                           withToken token: String,
                           completion: @escaping (String) -> Void) {
-        getSpreadsheet(withID: id, withToken: token) { sheet in
+        getSpreadsheetValues(withID: id, withToken: token) { sheet in
             guard let rows = sheet?.values.count else { return }
             guard let columns = sheet?.values[0].count else { return }
             

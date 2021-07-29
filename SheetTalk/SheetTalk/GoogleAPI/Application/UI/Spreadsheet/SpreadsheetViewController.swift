@@ -21,6 +21,7 @@ class SpreadsheetViewController: UIViewController {
     @IBOutlet weak var inputText: UITextField!
     @IBOutlet weak var inputBtn: UIButton!
     
+    // MARK: viewDidLoad()
     override func viewDidLoad() {
         super.viewDidLoad()
         spreadsheetView.register(SpreadsheetViewCell.self, forCellWithReuseIdentifier: SpreadsheetViewCell.identifier)
@@ -78,19 +79,27 @@ class SpreadsheetViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    // 입력 btn Action
+    // MARK: 입력 btn Action
     @IBAction func inputData(_ sender: Any) {
-        //guard 문 추가 터짐 방지
-        if Int(Character(y.text!).asciiValue!)-64 >= 1 && Int(Character(y.text!).asciiValue!)-64 <= 26 {
-            let indexPath = [Int(Character(y.text!).asciiValue!)-64, Int(x.text!)!] as IndexPath
-            print(indexPath)
+        // guard 문 추가 터짐 방지
+        let abcIndex:Int = Int(Character(y.text!).asciiValue!)-64
+        let numberIndex:Int = Int(x.text!)!
+        
+        if abcIndex >= 1 && abcIndex <= 26 {
+            let indexPath = [abcIndex, numberIndex] as IndexPath
     //        indexPath.section = Int(x.text!)!
     //        indexPath.row = Int(y.text!)!
             spreadsheetView.selectItem(at: indexPath, animated: true, scrollPosition: ScrollPosition.init())      //지정된 인덱스 경로에서 항목을 선택하고 선택적으로 보기로 스크롤합니다.
 
+            // 스프레드시트 뷰에 입력한 값 띄우기
             let cell = spreadsheetView.cellForItem(at: indexPath) as! SpreadsheetViewCell
-            print(cell.tField.text!)
+            print("tField text: ", cell.tField.text!)
             cell.tField.text = inputText.text
+            
+            // post를 위해 spreadsheet values에 값 대입
+            viewModel.sheet?.values[numberIndex-1][abcIndex-1] = inputText.text!
+//            print("values 배열 전체 출력: ", viewModel.sheet?.values)
+//            print("삽입했는지 확인. values 값!", viewModel.sheet?.values[numberIndex-1][abcIndex-1])
         } else {
             self.showToast(message: "행렬을 다시 입력하세요")
         }
@@ -138,12 +147,23 @@ class SpreadsheetViewController: UIViewController {
         self.view.endEditing(true)
     }
 
-    @objc func saveSheet(_ sender: Any) {   // 시트 내용 저장 Btn
-        
+    // MARK: 시트 내용 저장 Btn
+    @objc func saveSheet(_ sender: Any) {
+        viewModel.postNewRow(withID: viewModel.driveFile.id, withToken: GoogleService.accessToken) { _ in
+            self.viewModel.getSpreadsheetValues(withID: self.viewModel.driveFile.id, withToken: GoogleService.accessToken) { sheet in
+                guard let sheet = sheet else { return }
+                self.viewModel.sheet = sheet
+                
+                DispatchQueue.main.async {
+                    self.spreadsheetView.reloadData()
+                }
+            }
+        }
     }
     
+    // MARK: sheet value 받아오기
     private func getFiles() {
-        viewModel.getSpreadsheet(withID: viewModel.driveFile.id, withToken: GoogleService.accessToken) { sheet in
+        viewModel.getSpreadsheetValues(withID: viewModel.driveFile.id, withToken: GoogleService.accessToken) { sheet in
             guard let sheet = sheet else { return }
             self.viewModel.sheet = sheet
             self.isSheetLoad = true
@@ -155,7 +175,7 @@ class SpreadsheetViewController: UIViewController {
     }
 }
 
-
+// MARK: SpreadsheetViewDataSource
 extension SpreadsheetViewController: SpreadsheetViewDataSource {
    
     // 셀 열 몇줄
