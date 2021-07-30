@@ -33,7 +33,7 @@ class MainTabBarController: UITabBarController {
                 createNavController(for: DriveViewController(), title: NSLocalizedString("Home", comment: ""), image: UIImage(systemName: "homekit")!),
                 createNavController(for: channelsvc, title: NSLocalizedString("Chat", comment: ""), image: UIImage(systemName: "message.fill")!),
                 
-                createNavController(for: Test2ViewController(), title: NSLocalizedString("More", comment: ""), image: UIImage(systemName: "homekit")!)
+                createNavController(for: Test2ViewController(), title: NSLocalizedString("More", comment: ""), image: UIImage(systemName: "ellipsis.circle.fill")!)
             ]
           
         } else {

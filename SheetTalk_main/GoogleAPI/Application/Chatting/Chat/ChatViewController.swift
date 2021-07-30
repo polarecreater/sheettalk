@@ -5,6 +5,8 @@ import MessageKit
 import InputBarAccessoryView
 import FirebaseFirestore
 
+
+
 final class ChatViewController: MessagesViewController {
   private var isSendingPhoto = false {
     didSet {
@@ -26,6 +28,8 @@ final class ChatViewController: MessagesViewController {
 
   private let user: User
   private let channel: Channel
+    
+ 
 
   deinit {
     messageListener?.remove()
@@ -47,10 +51,23 @@ final class ChatViewController: MessagesViewController {
     super.viewDidLoad()
     listenToMessages()
     navigationItem.largeTitleDisplayMode = .never
+    navigationController?.navigationBar.tintColor = UIColor.orange
+    
+   
+    
+
+    
+    
+    
+    
+    
+    
     setUpMessageView()
-    removeMessageAvatars()
+   // removeMessageAvatars()   사진넣기
     //addCameraBarButton()
   }
+    
+   
 
   private func listenToMessages() {
     guard let id = channel.id else {
@@ -258,7 +275,7 @@ extension ChatViewController: MessagesDisplayDelegate {
   }
 
   func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-    avatarView.isHidden = true
+    avatarView.isHidden = false //채팅 사진 넣기
   }
 
   func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {

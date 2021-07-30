@@ -40,7 +40,6 @@
 		FE538FD826B192B90051E880 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE538FD426B192B90051E880 /* UIColor+Additions.swift */; };
 		FE538FD926B192B90051E880 /* UICollectionView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE538FD526B192B90051E880 /* UICollectionView+Additions.swift */; };
 		FE538FE026B195190051E880 /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = FE538FDF26B195190051E880 /* MessageKit */; };
-		FE538FE226B25D320051E880 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = FE538FE126B25D320051E880 /* bg.png */; };
 		FE538FE926B295A40051E880 /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE538FE826B295A40051E880 /* PersonViewController.swift */; };
 		FE538FEB26B295B50051E880 /* PersonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FE538FEA26B295B50051E880 /* PersonView.xib */; };
 		FE538FEE26B2973A0051E880 /* PersonCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE538FED26B2973A0051E880 /* PersonCellController.swift */; };
@@ -99,7 +98,6 @@
 		FE538FD326B192B90051E880 /* UIView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Additions.swift"; sourceTree = "<group>"; };
 		FE538FD426B192B90051E880 /* UIColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		FE538FD526B192B90051E880 /* UICollectionView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Additions.swift"; sourceTree = "<group>"; };
-		FE538FE126B25D320051E880 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		FE538FE826B295A40051E880 /* PersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
 		FE538FEA26B295B50051E880 /* PersonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonView.xib; sourceTree = "<group>"; };
 		FE538FED26B2973A0051E880 /* PersonCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCellController.swift; sourceTree = "<group>"; };
@@ -163,11 +161,10 @@
 				FE538FB326B18E280051E880 /* AppControlelr.swift */,
 				FE538FA926B144680051E880 /* Main.storyboard */,
 				FE538FB726B1918E0051E880 /* SceneDelegate.swift */,
-				2063BE9D23586CB20019E3D7 /* Assets.xcassets */,
-				FE538FE126B25D320051E880 /* bg.png */,
 				2063BE9F23586CB20019E3D7 /* LaunchScreen.storyboard */,
 				2063BEA223586CB20019E3D7 /* Info.plist */,
 				FE38331926AFE0BB00E8BDF6 /* GoogleService-Info.plist */,
+				2063BE9D23586CB20019E3D7 /* Assets.xcassets */,
 				FE538FAB26B146690051E880 /* MainTabBarController.swift */,
 			);
 			path = GoogleAPI;
@@ -305,8 +302,8 @@
 			children = (
 				FE538FE526B295280051E880 /* ChoosePerson */,
 				FE538FDD26B193450051E880 /* NameLogin */,
-				FE538FC626B1927F0051E880 /* Chat */,
 				FE538FBF26B1924E0051E880 /* Channels */,
+				FE538FC626B1927F0051E880 /* Chat */,
 			);
 			path = Chatting;
 			sourceTree = "<group>";
@@ -439,7 +436,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE538FE226B25D320051E880 /* bg.png in Resources */,
 				FE538FEB26B295B50051E880 /* PersonView.xib in Resources */,
 				FE538FF026B297660051E880 /* PersonCell.xib in Resources */,
 				FE538FBE26B192430051E880 /* LoginViewController.xib in Resources */,

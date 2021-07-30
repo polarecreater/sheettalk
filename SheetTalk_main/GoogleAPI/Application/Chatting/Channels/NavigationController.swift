@@ -29,6 +29,6 @@ final class NavigationController: UINavigationController {
     navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
     navigationBar.largeTitleTextAttributes = navigationBar.titleTextAttributes
 
-    toolbar.tintColor = .black
+    toolbar.tintColor = UIColor.black
   }
 }

@@ -12,6 +12,7 @@ final class ChannelsViewController: UITableViewController {
     let label = UILabel()
     label.textAlignment = .center
     label.font = UIFont.systemFont(ofSize: 15)
+    
     return label
   }()
 
@@ -50,6 +51,11 @@ final class ChannelsViewController: UITableViewController {
     searchController.searchBar.placeholder = "Search"
     navigationItem.searchController = searchController
     navigationItem.rightBarButtonItem = editButtonItem
+    navigationItem.rightBarButtonItem?.tintColor = UIColor.black
+    
+    
+    
+
     definesPresentationContext = true
     
 
@@ -64,6 +70,9 @@ final class ChannelsViewController: UITableViewController {
       UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed))
     ]
     //toolbarLabel.text = AppSettings.displayName
+    navigationController?.toolbar.clipsToBounds = true
+    navigationController?.toolbar.tintColor = UIColor.black
+    
 
     channelListener = channelReference.addSnapshotListener { [weak self] querySnapshot, error in
       guard let self = self else { return }
@@ -113,7 +122,12 @@ final class ChannelsViewController: UITableViewController {
 */
   @objc private func addButtonPressed() {
     let alertController = UIAlertController(title: "Create a new Channel", message: nil, preferredStyle: .alert)
-    alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+        
+    }
+    alertController.addAction(cancelAction)
+    cancelAction.setValue(UIColor.orange, forKey: "titleTextColor")
+    
     alertController.addTextField { field in
       field.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
       field.enablesReturnKeyAutomatically = true
