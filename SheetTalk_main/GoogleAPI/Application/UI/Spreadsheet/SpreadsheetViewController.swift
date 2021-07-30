@@ -103,7 +103,7 @@ class SpreadsheetViewController: UIViewController {
             cell.tField.text = inputText.text
             
             // post를 위해 spreadsheet values에 값 대입
-            if viewModel.sheet?.values.count ?? 0 < cell.row {
+            if viewModel.sheet?.values.count ?? 0 < numberIndex { // 가독성을 위해 비교값을 cell.row에서 numberIndex로 수정
                 let lastRow = (viewModel.sheet?.values.count ?? 0) + 1
                 for _ in lastRow...numberIndex {
                     viewModel.sheet?.values.append(Array(repeating: "", count: abcIndex))
@@ -250,7 +250,19 @@ extension SpreadsheetViewController: SpreadsheetViewDataSource {
     // 셀 내용
     func spreadsheetView(_ spreadsheetView: SpreadsheetView, cellForItemAt indexPath: IndexPath) -> Cell? {
         let rows = viewModel.sheet?.values.count ?? 0
-        let columns = viewModel.sheet?.values[1].count ?? 0
+        
+        let columns:Int!
+        if let sheet = viewModel.sheet {
+            var maxCount:Int = 0
+            for i in 0...sheet.values.count-1 {
+                if maxCount < sheet.values[i].count {
+                    maxCount = sheet.values[i].count
+                }
+            }
+            columns = maxCount
+        } else { columns = 0 }
+        
+        
         let cell = spreadsheetView.dequeueReusableCell(withReuseIdentifier: SpreadsheetViewCell.identifier, for: indexPath) as! SpreadsheetViewCell
 
         // 행렬 좌표명 & 기본 셀 설정

@@ -49,11 +49,14 @@ class SpreadsheetViewModel {
                 completion(spreadsheet.valueRanges.first)
             }
             .resume()
+            
         case "POST":
             print("httpRequestMethod: POST")
-            completion(sheet)
+            print("넘겨줄 sheet:", self.sheet!)
+            completion(self.sheet!)
+            
         default:
-            print("getSpreadsheetValues()를 호출할거면 GET이나 POST를 입력해라")
+            print("getSpreadsheetValues()를 호출할거면 GET이나 POST를 입력하세요")
         }
     }
     
