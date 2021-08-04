@@ -25,7 +25,7 @@
 		23A3E50E26B45A4600A5D25E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A3E50C26B45A4600A5D25E /* ChatViewController.swift */; };
 		23A3E50F26B45A4600A5D25E /* ChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A3E50D26B45A4600A5D25E /* ChatViewController.xib */; };
 		9E13D37FE717C4BBF955FE9C /* Pods_GoogleAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 294932E448C53A6A569B0690 /* Pods_GoogleAPI.framework */; };
-		C5899D6926BA7D5800A9FE35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5899D6826BA7D5800A9FE35 /* GoogleService-Info.plist */; };
+		C5899D7126BADC5600A9FE35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C5899D7026BADC5600A9FE35 /* GoogleService-Info.plist */; };
 		FE538FAA26B144690051E880 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE538FA926B144680051E880 /* Main.storyboard */; };
 		FE538FAC26B146690051E880 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE538FAB26B146690051E880 /* MainTabBarController.swift */; };
 		FE538FB026B18B300051E880 /* Test1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE538FAF26B18B300051E880 /* Test1ViewController.swift */; };
@@ -91,7 +91,7 @@
 		294932E448C53A6A569B0690 /* Pods_GoogleAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D0AAA39D75D5827E1E0C125 /* Pods-GoogleAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleAPI.debug.xcconfig"; path = "Target Support Files/Pods-GoogleAPI/Pods-GoogleAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		3483EFA13FF686359F411E5F /* Pods-GoogleAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleAPI.release.xcconfig"; path = "Target Support Files/Pods-GoogleAPI/Pods-GoogleAPI.release.xcconfig"; sourceTree = "<group>"; };
-		C5899D6826BA7D5800A9FE35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C5899D7026BADC5600A9FE35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FE538FA926B144680051E880 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		FE538FAB26B146690051E880 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		FE538FAF26B18B300051E880 /* Test1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test1ViewController.swift; sourceTree = "<group>"; };
@@ -180,9 +180,9 @@
 				2063BE9D23586CB20019E3D7 /* Assets.xcassets */,
 				FE538FE126B25D320051E880 /* bg.png */,
 				2063BE9F23586CB20019E3D7 /* LaunchScreen.storyboard */,
-				C5899D6826BA7D5800A9FE35 /* GoogleService-Info.plist */,
 				2063BEA223586CB20019E3D7 /* Info.plist */,
 				FE538FAB26B146690051E880 /* MainTabBarController.swift */,
+				C5899D7026BADC5600A9FE35 /* GoogleService-Info.plist */,
 			);
 			path = GoogleAPI;
 			sourceTree = "<group>";
@@ -475,8 +475,8 @@
 				FE53901E26B2A8740051E880 /* DriveCollectionViewCell.xib in Resources */,
 				FE538FAA26B144690051E880 /* Main.storyboard in Resources */,
 				2361FEB026B6394200AAC5BE /* MoreViewController.xib in Resources */,
-				C5899D6926BA7D5800A9FE35 /* GoogleService-Info.plist in Resources */,
 				2063BEA123586CB20019E3D7 /* LaunchScreen.storyboard in Resources */,
+				C5899D7126BADC5600A9FE35 /* GoogleService-Info.plist in Resources */,
 				2063BE9E23586CB20019E3D7 /* Assets.xcassets in Resources */,
 				FE53901826B2A8610051E880 /* DriveViewController.xib in Resources */,
 				23480E7926B51E6B0051C2C3 /* ChannelsViewController.xib in Resources */,

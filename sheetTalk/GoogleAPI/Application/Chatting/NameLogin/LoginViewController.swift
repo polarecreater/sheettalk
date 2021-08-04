@@ -9,7 +9,7 @@ final class LoginViewController: UIViewController, UINavigationControllerDelegat
 //    @IBOutlet private var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var profileImageButton: UIButton!
     
-    
+    public static var imgTmp: UIImage!
     var ref: DatabaseReference!//post
     var refHandle : DatabaseHandle!
     var ref2 : DatabaseReference!

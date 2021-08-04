@@ -29,6 +29,13 @@ class MoreViewController: UIViewController {
         
 //        userView.layer.cornerRadius = 10
         
+        let userPic = LoginViewController.imgTmp
+        userImg.setImage(userPic, for: .normal)
+        print("할당함")
+        userName.text = AppSettings.displayName
+        userID.text = GoogleService.userEmail
+
+        
         userImg.setImage(UIImage(named: "default_profile"), for: .normal)
         userName.text = AppSettings.displayName
         userID.text = GoogleService.userEmail
